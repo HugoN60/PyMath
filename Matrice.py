@@ -96,6 +96,19 @@ class Matrice():
                 raise ValueError("The inverse of the matrix doesn't exist ")
             identite[p] = [x / nb for x in identite[p]]
         return Matrice(identite)
+    
+    def transpose(self):
+        """
+        Computes the transpose of a matrix
+
+        Returns
+        -------
+        Matrice
+            A new matrix instance representing the transpose.
+        """
+        
+        m = [[self.__matrice[x][y] for x in range(self.__dim[0])] for y in range(self.__dim[1])]
+        return Matrice(m)
 
                 
     @staticmethod
@@ -167,4 +180,5 @@ tab3 = [[1]]
 m = Matrice(tab)
 m2 = Matrice(tab2)
 m3 = Matrice((tab3))
-print(repr(Matrice.identite([3, 3])))
+print(m2.transpose()*m2)
+print(m2*m2.transpose())
